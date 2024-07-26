@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "a9d310c7-e459-4493-8c6d-047f9ad6a001",
+		"_postman_id": "c5c62619-f6c8-4e39-9f30-5f5a3ef1cb50",
 		"name": "Scheduler",
 		"description": "The Scheduler API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
@@ -75,7 +75,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": "370b5d61-37a5-4c48-bf71-1fb93f0a792a",
+											"value": "<string>",
 											"description": "(Required) "
 										}
 									]
@@ -124,7 +124,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"active\": true\n}",
+									"raw": "{\n  \"phoneNumber\": \"<string>\",\n  \"active\": \"<boolean>\",\n  \"appointmentLength\": \"<number>\"\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -144,7 +144,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": "370b5d61-37a5-4c48-bf71-1fb93f0a792a",
+											"value": "<string>",
 											"description": "(Required) "
 										}
 									]
@@ -213,7 +213,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": "370b5d61-37a5-4c48-bf71-1fb93f0a792a",
+											"value": "<string>",
 											"description": "(Required) "
 										}
 									]
@@ -253,6 +253,633 @@
 					]
 				},
 				{
+					"name": "{providerId}",
+					"item": [
+						{
+							"name": "provider-bookings",
+							"item": [
+								{
+									"name": "{id}",
+									"item": [
+										{
+											"name": "assign",
+											"item": [
+												{
+													"name": "Provider Bookings Controller assign",
+													"request": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"clientId\": \"<string>\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/providers/:providerId/provider-bookings/:id/assign",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"providers",
+																":providerId",
+																"provider-bookings",
+																":id",
+																"assign"
+															],
+															"variable": [
+																{
+																	"key": "providerId",
+																	"value": "<string>",
+																	"description": "(Required) "
+																},
+																{
+																	"key": "id",
+																	"value": "<string>",
+																	"description": "(Required) "
+																}
+															]
+														}
+													},
+													"response": [
+														{
+															"name": "Untitled Response",
+															"originalRequest": {
+																"method": "POST",
+																"header": [
+																	{
+																		"key": "Content-Type",
+																		"value": "application/json"
+																	}
+																],
+																"body": {
+																	"mode": "raw",
+																	"raw": "{\n  \"clientId\": \"<string>\"\n}",
+																	"options": {
+																		"raw": {
+																			"headerFamily": "json",
+																			"language": "json"
+																		}
+																	}
+																},
+																"url": {
+																	"raw": "{{baseUrl}}/providers/:providerId/provider-bookings/:id/assign",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"providers",
+																		":providerId",
+																		"provider-bookings",
+																		":id",
+																		"assign"
+																	],
+																	"variable": [
+																		{
+																			"key": "providerId"
+																		},
+																		{
+																			"key": "id"
+																		}
+																	]
+																}
+															},
+															"status": "Created",
+															"code": 201,
+															"_postman_previewlanguage": "text",
+															"header": [],
+															"cookie": [],
+															"body": ""
+														}
+													]
+												}
+											]
+										},
+										{
+											"name": "confirm",
+											"item": [
+												{
+													"name": "Provider Bookings Controller confirm",
+													"request": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"clientId\": \"<string>\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/providers/:providerId/provider-bookings/:id/confirm",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"providers",
+																":providerId",
+																"provider-bookings",
+																":id",
+																"confirm"
+															],
+															"variable": [
+																{
+																	"key": "providerId",
+																	"value": "<string>",
+																	"description": "(Required) "
+																},
+																{
+																	"key": "id",
+																	"value": "<string>",
+																	"description": "(Required) "
+																}
+															]
+														}
+													},
+													"response": [
+														{
+															"name": "Untitled Response",
+															"originalRequest": {
+																"method": "POST",
+																"header": [
+																	{
+																		"key": "Content-Type",
+																		"value": "application/json"
+																	}
+																],
+																"body": {
+																	"mode": "raw",
+																	"raw": "{\n  \"clientId\": \"<string>\"\n}",
+																	"options": {
+																		"raw": {
+																			"headerFamily": "json",
+																			"language": "json"
+																		}
+																	}
+																},
+																"url": {
+																	"raw": "{{baseUrl}}/providers/:providerId/provider-bookings/:id/confirm",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"providers",
+																		":providerId",
+																		"provider-bookings",
+																		":id",
+																		"confirm"
+																	],
+																	"variable": [
+																		{
+																			"key": "providerId"
+																		},
+																		{
+																			"key": "id"
+																		}
+																	]
+																}
+															},
+															"status": "Created",
+															"code": 201,
+															"_postman_previewlanguage": "text",
+															"header": [],
+															"cookie": [],
+															"body": ""
+														}
+													]
+												}
+											]
+										},
+										{
+											"name": "Provider Bookings Controller find One",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/providers/:providerId/provider-bookings/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"providers",
+														":providerId",
+														"provider-bookings",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "providerId",
+															"value": "<string>",
+															"description": "(Required) "
+														},
+														{
+															"key": "id",
+															"value": "<string>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "Untitled Response",
+													"originalRequest": {
+														"method": "GET",
+														"header": [],
+														"url": {
+															"raw": "{{baseUrl}}/providers/:providerId/provider-bookings/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"providers",
+																":providerId",
+																"provider-bookings",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "providerId"
+																},
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"body": ""
+												}
+											]
+										},
+										{
+											"name": "Provider Bookings Controller update",
+											"request": {
+												"method": "PATCH",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"confirmed\": \"<boolean>\",\n  \"bookedById\": \"<string>\",\n  \"expiry\": \"<string>\",\n  \"expired\": \"<boolean>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/providers/:providerId/provider-bookings/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"providers",
+														":providerId",
+														"provider-bookings",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "providerId",
+															"value": "<string>",
+															"description": "(Required) "
+														},
+														{
+															"key": "id",
+															"value": "<string>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "Untitled Response",
+													"originalRequest": {
+														"method": "PATCH",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"confirmed\": \"<boolean>\",\n  \"bookedById\": \"<string>\",\n  \"expiry\": \"<string>\",\n  \"expired\": \"<boolean>\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/providers/:providerId/provider-bookings/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"providers",
+																":providerId",
+																"provider-bookings",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "providerId"
+																},
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"body": ""
+												}
+											]
+										},
+										{
+											"name": "Provider Bookings Controller remove",
+											"request": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/providers/:providerId/provider-bookings/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"providers",
+														":providerId",
+														"provider-bookings",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "providerId",
+															"value": "<string>",
+															"description": "(Required) "
+														},
+														{
+															"key": "id",
+															"value": "<string>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "Untitled Response",
+													"originalRequest": {
+														"method": "DELETE",
+														"header": [],
+														"url": {
+															"raw": "{{baseUrl}}/providers/:providerId/provider-bookings/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"providers",
+																":providerId",
+																"provider-bookings",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "providerId"
+																},
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"body": ""
+												}
+											]
+										}
+									]
+								},
+								{
+									"name": "Provider Bookings Controller create",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"startTime\": \"<string>\",\n  \"endTime\": \"<string>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/providers/:providerId/provider-bookings",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"providers",
+												":providerId",
+												"provider-bookings"
+											],
+											"variable": [
+												{
+													"key": "providerId",
+													"value": "<string>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Untitled Response",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"startTime\": \"<string>\",\n  \"endTime\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/providers/:providerId/provider-bookings",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"providers",
+														":providerId",
+														"provider-bookings"
+													],
+													"variable": [
+														{
+															"key": "providerId"
+														}
+													]
+												}
+											},
+											"status": "Created",
+											"code": 201,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								},
+								{
+									"name": "Provider Bookings Controller find All",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/providers/:providerId/provider-bookings?bookedById=<string>&confirmed=<string>&startTime=<string>&endTime=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"providers",
+												":providerId",
+												"provider-bookings"
+											],
+											"query": [
+												{
+													"key": "bookedById",
+													"value": "<string>"
+												},
+												{
+													"key": "confirmed",
+													"value": "<string>"
+												},
+												{
+													"key": "startTime",
+													"value": "<string>"
+												},
+												{
+													"key": "endTime",
+													"value": "<string>"
+												}
+											],
+											"variable": [
+												{
+													"key": "providerId",
+													"value": "<string>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Untitled Response",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/providers/:providerId/provider-bookings?bookedById=<string>&confirmed=<string>&startTime=<string>&endTime=<string>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"providers",
+														":providerId",
+														"provider-bookings"
+													],
+													"query": [
+														{
+															"key": "bookedById",
+															"value": "<string>"
+														},
+														{
+															"key": "confirmed",
+															"value": "<string>"
+														},
+														{
+															"key": "startTime",
+															"value": "<string>"
+														},
+														{
+															"key": "endTime",
+															"value": "<string>"
+														}
+													],
+													"variable": [
+														{
+															"key": "providerId"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
 					"name": "Providers Controller create",
 					"request": {
 						"method": "POST",
@@ -264,7 +891,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"email\": \"test-provider@test.org\",\n  \"name\": \"testing\",\n  \"phoneNumber\": \"90000000\",\n  \"active\": true,\n  \"appointmentLength\": 15\n}",
+							"raw": "{\n  \"email\": \"<string>\",\n  \"name\": \"<string>\",\n  \"phoneNumber\": \"<string>\",\n  \"active\": \"<boolean>\",\n  \"appointmentLength\": \"<number>\"\n}",
 							"options": {
 								"raw": {
 									"headerFamily": "json",
@@ -328,7 +955,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/providers",
+							"raw": "{{baseUrl}}/providers?email=<string>&name=<string>&phoneNumber=<string>&active=<boolean>&appointmentLength=<number>",
 							"host": [
 								"{{baseUrl}}"
 							],
@@ -338,28 +965,23 @@
 							"query": [
 								{
 									"key": "email",
-									"value": "<string>",
-									"disabled": true
+									"value": "<string>"
 								},
 								{
 									"key": "name",
-									"value": "<string>",
-									"disabled": true
+									"value": "<string>"
 								},
 								{
 									"key": "phoneNumber",
-									"value": "<string>",
-									"disabled": true
+									"value": "<string>"
 								},
 								{
 									"key": "active",
-									"value": "<boolean>",
-									"disabled": true
+									"value": "<boolean>"
 								},
 								{
 									"key": "appointmentLength",
-									"value": "<number>",
-									"disabled": true
+									"value": "<number>"
 								}
 							]
 						}
@@ -420,6 +1042,87 @@
 					"name": "{id}",
 					"item": [
 						{
+							"name": "bookings",
+							"item": [
+								{
+									"name": "Client Controller get Bookings",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/client/:id/bookings?confirmed=<boolean>&expired=<boolean>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"client",
+												":id",
+												"bookings"
+											],
+											"query": [
+												{
+													"key": "confirmed",
+													"value": "<boolean>"
+												},
+												{
+													"key": "expired",
+													"value": "<boolean>"
+												}
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "<string>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Untitled Response",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/client/:id/bookings?confirmed=<boolean>&expired=<boolean>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"client",
+														":id",
+														"bookings"
+													],
+													"query": [
+														{
+															"key": "confirmed",
+															"value": "<boolean>"
+														},
+														{
+															"key": "expired",
+															"value": "<boolean>"
+														}
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
 							"name": "Client Controller find One",
 							"request": {
 								"method": "GET",
@@ -436,68 +1139,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": "f70c9e6b-2f7c-4684-972c-ec0d3ee996aa",
-											"description": "(Required) "
-										}
-									]
-								}
-							},
-							"response": [
-								{
-									"name": "Untitled Response",
-									"originalRequest": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "{{baseUrl}}/client/:id",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"client",
-												":id"
-											],
-											"variable": [
-												{
-													"key": "id"
-												}
-											]
-										}
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "text",
-									"header": [],
-									"cookie": [],
-									"body": ""
-								}
-							]
-						},
-						{
-							"name": "get bookings",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/client/:id/bookings?confirmed=true",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"client",
-										":id",
-										"bookings"
-									],
-									"query": [
-										{
-											"key": "confirmed",
-											"value": "true"
-										}
-									],
-									"variable": [
-										{
-											"key": "id",
-											"value": "f70c9e6b-2f7c-4684-972c-ec0d3ee996aa",
+											"value": "<string>",
 											"description": "(Required) "
 										}
 									]
@@ -546,7 +1188,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"phoneNumber\": \"00000000\"\n}",
+									"raw": "{\n  \"phoneNumber\": \"<string>\"\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -566,7 +1208,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": "6aaa8226-6b6f-4237-81c9-e52bdec28c6f",
+											"value": "<string>",
 											"description": "(Required) "
 										}
 									]
@@ -635,7 +1277,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": "6aaa8226-6b6f-4237-81c9-e52bdec28c6f",
+											"value": "<string>",
 											"description": "(Required) "
 										}
 									]
@@ -686,7 +1328,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"email\": \"new-test@test.org\",\n  \"name\": \"tester\",\n  \"phoneNumber\": \"111111111\"\n}",
+							"raw": "{\n  \"email\": \"<string>\",\n  \"name\": \"<string>\",\n  \"phoneNumber\": \"<string>\"\n}",
 							"options": {
 								"raw": {
 									"headerFamily": "json",
@@ -750,7 +1392,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/client",
+							"raw": "{{baseUrl}}/client?email=<string>&name=<string>&phoneNumber=<string>",
 							"host": [
 								"{{baseUrl}}"
 							],
@@ -760,18 +1402,15 @@
 							"query": [
 								{
 									"key": "email",
-									"value": "<string>",
-									"disabled": true
+									"value": "<string>"
 								},
 								{
 									"key": "name",
-									"value": "<string>",
-									"disabled": true
+									"value": "<string>"
 								},
 								{
 									"key": "phoneNumber",
-									"value": "<string>",
-									"disabled": true
+									"value": "<string>"
 								}
 							]
 						}
@@ -801,573 +1440,6 @@
 										},
 										{
 											"key": "phoneNumber",
-											"value": "<string>"
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "text",
-							"header": [],
-							"cookie": [],
-							"body": ""
-						}
-					]
-				}
-			]
-		},
-		{
-			"name": "provider-bookings",
-			"item": [
-				{
-					"name": "{id}",
-					"item": [
-						{
-							"name": "assign",
-							"item": [
-								{
-									"name": "Provider Bookings Controller assign",
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"clientId\": \"f70c9e6b-2f7c-4684-972c-ec0d3ee996aa\"\n}",
-											"options": {
-												"raw": {
-													"headerFamily": "json",
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{baseUrl}}/providers/:providerId/provider-bookings/:bookingId/assign",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"providers",
-												":providerId",
-												"provider-bookings",
-												":bookingId",
-												"assign"
-											],
-											"variable": [
-												{
-													"key": "providerId",
-													"value": "65dfa486-9085-45fe-9e5d-0404c9c7d010"
-												},
-												{
-													"key": "bookingId",
-													"value": "62cc4faa-9b71-40bb-a077-c255ec623eb6"
-												}
-											]
-										}
-									},
-									"response": [
-										{
-											"name": "Untitled Response",
-											"originalRequest": {
-												"method": "POST",
-												"header": [
-													{
-														"key": "Content-Type",
-														"value": "application/json"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n  \"clientId\": \"<string>\"\n}",
-													"options": {
-														"raw": {
-															"headerFamily": "json",
-															"language": "json"
-														}
-													}
-												},
-												"url": {
-													"raw": "{{baseUrl}}/provider-bookings/:id/assign",
-													"host": [
-														"{{baseUrl}}"
-													],
-													"path": [
-														"provider-bookings",
-														":id",
-														"assign"
-													],
-													"variable": [
-														{
-															"key": "id"
-														}
-													]
-												}
-											},
-											"status": "Created",
-											"code": 201,
-											"_postman_previewlanguage": "text",
-											"header": [],
-											"cookie": [],
-											"body": ""
-										}
-									]
-								}
-							]
-						},
-						{
-							"name": "confirm",
-							"item": [
-								{
-									"name": "Provider Bookings Controller confirm",
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"clientId\": \"f70c9e6b-2f7c-4684-972c-ec0d3ee996aa\"\n}",
-											"options": {
-												"raw": {
-													"headerFamily": "json",
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{baseUrl}}/providers/:providerId/provider-bookings/:bookingId/confirm",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"providers",
-												":providerId",
-												"provider-bookings",
-												":bookingId",
-												"confirm"
-											],
-											"variable": [
-												{
-													"key": "providerId",
-													"value": "65dfa486-9085-45fe-9e5d-0404c9c7d010"
-												},
-												{
-													"key": "bookingId",
-													"value": "62cc4faa-9b71-40bb-a077-c255ec623eb6"
-												}
-											]
-										}
-									},
-									"response": [
-										{
-											"name": "Untitled Response",
-											"originalRequest": {
-												"method": "POST",
-												"header": [
-													{
-														"key": "Content-Type",
-														"value": "application/json"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n  \"clientId\": \"<string>\"\n}",
-													"options": {
-														"raw": {
-															"headerFamily": "json",
-															"language": "json"
-														}
-													}
-												},
-												"url": {
-													"raw": "{{baseUrl}}/provider-bookings/:id/confirm",
-													"host": [
-														"{{baseUrl}}"
-													],
-													"path": [
-														"provider-bookings",
-														":id",
-														"confirm"
-													],
-													"variable": [
-														{
-															"key": "id"
-														}
-													]
-												}
-											},
-											"status": "Created",
-											"code": 201,
-											"_postman_previewlanguage": "text",
-											"header": [],
-											"cookie": [],
-											"body": ""
-										}
-									]
-								}
-							]
-						},
-						{
-							"name": "Provider Bookings Controller find One",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/provider-bookings/:id",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"provider-bookings",
-										":id"
-									],
-									"variable": [
-										{
-											"key": "id",
-											"value": "<string>",
-											"description": "(Required) "
-										}
-									]
-								}
-							},
-							"response": [
-								{
-									"name": "Untitled Response",
-									"originalRequest": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "{{baseUrl}}/provider-bookings/:id",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"provider-bookings",
-												":id"
-											],
-											"variable": [
-												{
-													"key": "id"
-												}
-											]
-										}
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "text",
-									"header": [],
-									"cookie": [],
-									"body": ""
-								}
-							]
-						},
-						{
-							"name": "Provider Bookings Controller update",
-							"request": {
-								"method": "PATCH",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n  \"confirmed\": \"<boolean>\",\n  \"bookedById\": \"<string>\",\n  \"expiry\": \"<string>\",\n  \"expired\": \"<boolean>\"\n}",
-									"options": {
-										"raw": {
-											"headerFamily": "json",
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{baseUrl}}/provider-bookings/:id",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"provider-bookings",
-										":id"
-									],
-									"variable": [
-										{
-											"key": "id",
-											"value": "<string>",
-											"description": "(Required) "
-										}
-									]
-								}
-							},
-							"response": [
-								{
-									"name": "Untitled Response",
-									"originalRequest": {
-										"method": "PATCH",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"confirmed\": \"<boolean>\",\n  \"bookedById\": \"<string>\",\n  \"expiry\": \"<string>\",\n  \"expired\": \"<boolean>\"\n}",
-											"options": {
-												"raw": {
-													"headerFamily": "json",
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{baseUrl}}/provider-bookings/:id",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"provider-bookings",
-												":id"
-											],
-											"variable": [
-												{
-													"key": "id"
-												}
-											]
-										}
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "text",
-									"header": [],
-									"cookie": [],
-									"body": ""
-								}
-							]
-						},
-						{
-							"name": "Provider Bookings Controller remove",
-							"request": {
-								"method": "DELETE",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/provider-bookings/:id",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"provider-bookings",
-										":id"
-									],
-									"variable": [
-										{
-											"key": "id",
-											"value": "<string>",
-											"description": "(Required) "
-										}
-									]
-								}
-							},
-							"response": [
-								{
-									"name": "Untitled Response",
-									"originalRequest": {
-										"method": "DELETE",
-										"header": [],
-										"url": {
-											"raw": "{{baseUrl}}/provider-bookings/:id",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"provider-bookings",
-												":id"
-											],
-											"variable": [
-												{
-													"key": "id"
-												}
-											]
-										}
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "text",
-									"header": [],
-									"cookie": [],
-									"body": ""
-								}
-							]
-						}
-					]
-				},
-				{
-					"name": "Provider Bookings Controller create",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"startTime\": \"2024-07-26T21:40:00.000Z\",\n  \"endTime\": \"2024-07-26T21:55:00.000Z\"\n}",
-							"options": {
-								"raw": {
-									"headerFamily": "json",
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{baseUrl}}/provider-bookings/:providerId",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"provider-bookings",
-								":providerId"
-							],
-							"variable": [
-								{
-									"key": "providerId",
-									"value": "65dfa486-9085-45fe-9e5d-0404c9c7d010"
-								}
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Untitled Response",
-							"originalRequest": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n  \"providerId\": \"<string>\",\n  \"startTime\": \"<string>\",\n  \"endTime\": \"<string>\"\n}",
-									"options": {
-										"raw": {
-											"headerFamily": "json",
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{baseUrl}}/provider-bookings",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"provider-bookings"
-									]
-								}
-							},
-							"status": "Created",
-							"code": 201,
-							"_postman_previewlanguage": "text",
-							"header": [],
-							"cookie": [],
-							"body": ""
-						}
-					]
-				},
-				{
-					"name": "Provider Bookings Controller find All",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/provider-bookings/:providerId",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"provider-bookings",
-								":providerId"
-							],
-							"query": [
-								{
-									"key": "providerId",
-									"value": "<string>",
-									"disabled": true
-								},
-								{
-									"key": "bookedById",
-									"value": "<string>",
-									"disabled": true
-								},
-								{
-									"key": "confirmed",
-									"value": "<string>",
-									"disabled": true
-								},
-								{
-									"key": "startTime",
-									"value": "<string>",
-									"disabled": true
-								},
-								{
-									"key": "endTime",
-									"value": "<string>",
-									"disabled": true
-								}
-							],
-							"variable": [
-								{
-									"key": "providerId",
-									"value": "65dfa486-9085-45fe-9e5d-0404c9c7d010"
-								}
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Untitled Response",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/provider-bookings?providerId=<string>&bookedById=<string>&confirmed=<string>&startTime=<string>&endTime=<string>",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"provider-bookings"
-									],
-									"query": [
-										{
-											"key": "providerId",
-											"value": "<string>"
-										},
-										{
-											"key": "bookedById",
-											"value": "<string>"
-										},
-										{
-											"key": "confirmed",
-											"value": "<string>"
-										},
-										{
-											"key": "startTime",
-											"value": "<string>"
-										},
-										{
-											"key": "endTime",
 											"value": "<string>"
 										}
 									]

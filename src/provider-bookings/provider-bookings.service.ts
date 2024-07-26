@@ -158,7 +158,16 @@ export class ProviderBookingsService {
     assignProviderBookingDto: AssignProviderBookingDto,
   ) {
     const booking = await this.providerBooking.findOne(providerId, id);
+    const tomorrow = new Date();
+    tomorrow.setHours(tomorrow.getHours() + 24);
     const now = new Date().toISOString();
+
+    // check if booking is at least 24 hours away
+    if (new Date(booking.startTime).toISOString() < tomorrow.toISOString()) {
+      throw new BadRequestException(
+        `Cannot assign booking with id ${id} because it is less than 24 hours away`,
+      );
+    }
 
     // if booking is already confirmed, do not allow confirmation
     if (booking.confirmed) {
