@@ -1,0 +1,49 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Provider {
+  id String @db.Uuid @default(uuid()) @unique
+  email String @unique
+  name String
+  phoneNumber String
+  active Boolean @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  availability ProviderBookings[]
+  appointmentLength Int @default(15)
+}
+
+model ProviderBookings {
+  id String @db.Uuid @default(uuid()) @unique
+  provider Provider @relation(fields: [providerId], references: [id])
+  providerId String @db.Uuid
+  startTime DateTime @unique
+  endTime DateTime
+  booked Boolean
+  bookedBy Client @relation(fields: [bookedById], references: [id])
+  bookedById String @db.Uuid
+  confirmed Boolean
+  expiry DateTime
+}
+
+model Client {
+  id String @db.Uuid @default(uuid()) @unique
+  email String @unique
+  name String
+  phoneNumber String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  bookings ProviderBookings[]
+}
