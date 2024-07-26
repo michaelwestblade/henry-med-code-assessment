@@ -2,10 +2,12 @@ import {
   BadRequestException,
   Injectable,
   NotFoundException,
+  InternalServerErrorException,
 } from '@nestjs/common';
 import { CreateProviderDto } from './dto/create-provider.dto';
 import { UpdateProviderDto } from './dto/update-provider.dto';
 import { Provider } from './entities/provider.entity';
+import { Prisma } from '@prisma/client';
 
 @Injectable()
 export class ProvidersService {
@@ -28,16 +30,29 @@ export class ProvidersService {
     return this.provider.findAll(filters);
   }
 
-  findOne(id: string) {
-    return this.provider.findOne(id);
+  async findOne(id: string) {
+    try {
+      const provider = await this.provider.findOne(id);
+      return provider;
+    } catch (error) {
+      if (
+        error instanceof Prisma.PrismaClientKnownRequestError &&
+        error.code === 'P2025'
+      ) {
+        throw new NotFoundException(`Provider with id ${id} not found`);
+      }
+
+      console.error(error);
+      throw new InternalServerErrorException(
+        `There was an issue processing the request`,
+      );
+    }
   }
 
   async update(id: string, updateProviderDto: UpdateProviderDto) {
     const provider = await this.provider.findOne(id);
 
-    if (!provider) {
-      throw new NotFoundException(`Provider with id ${id} not found`);
-    }
+    console.log(`Updating provider with id ${id} and email ${provider.email}`);
 
     return this.provider.update(id, updateProviderDto);
   }
@@ -45,9 +60,7 @@ export class ProvidersService {
   async remove(id: string) {
     const provider = await this.provider.findOne(id);
 
-    if (!provider) {
-      throw new NotFoundException(`Provider with id ${id} not found`);
-    }
+    console.log(`Removing provider with id ${id} and email ${provider.email}`);
 
     return this.provider.delete(id);
   }
