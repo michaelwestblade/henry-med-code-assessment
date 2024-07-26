@@ -32,3 +32,6 @@ APP: http://localhost:3000
 SWAGGER: http://localhost:3000/openapi
 SWAGGER-JSON: http://localhost:3000/openapi-json
 ```
+
+## Postman
+You can import the included postman collection "Scheduler.postman_collection.json" or import the openapi.json
