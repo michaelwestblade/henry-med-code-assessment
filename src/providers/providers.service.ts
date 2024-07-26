@@ -8,10 +8,14 @@ import { CreateProviderDto } from './dto/create-provider.dto';
 import { UpdateProviderDto } from './dto/update-provider.dto';
 import { Provider } from './entities/provider.entity';
 import { Prisma } from '@prisma/client';
+import { PrismaService } from '../prisma/prisma.service';
 
 @Injectable()
 export class ProvidersService {
-  constructor(private readonly provider: Provider) {}
+  constructor(
+    private readonly provider: Provider,
+    private prisma: PrismaService,
+  ) {}
 
   async create(createProviderDto: CreateProviderDto) {
     // check if provider already exists

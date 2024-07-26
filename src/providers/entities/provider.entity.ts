@@ -1,9 +1,11 @@
 import { PrismaService } from '../../prisma/prisma.service';
 import { CreateProviderDto } from '../dto/create-provider.dto';
 import { UpdateProviderDto } from '../dto/update-provider.dto';
+import { Injectable } from '@nestjs/common';
 
+@Injectable()
 export class Provider {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(private prisma: PrismaService) {}
 
   findOne(id: string) {
     return this.prisma.provider.findUnique({

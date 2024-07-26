@@ -1,7 +1,9 @@
 import { PrismaService } from '../../prisma/prisma.service';
 import { CreateProviderBookingDto } from '../dto/create-provider-booking.dto';
 import { UpdateProviderBookingDto } from '../dto/update-provider-booking.dto';
+import { Injectable } from '@nestjs/common';
 
+@Injectable()
 export class ProviderBooking {
   constructor(private readonly prisma: PrismaService) {}
 
