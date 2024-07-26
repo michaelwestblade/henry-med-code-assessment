@@ -12,6 +12,7 @@ import { ClientService } from './client.service';
 import { CreateClientDto } from './dto/create-client.dto';
 import { UpdateClientDto } from './dto/update-client.dto';
 import { GetClientDto } from './dto/get-client.dto';
+import { GetClientBookingsDto } from './dto/get-client-bookings.dto';
 
 @Controller('client')
 export class ClientController {
@@ -40,5 +41,10 @@ export class ClientController {
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.clientService.remove(id);
+  }
+
+  @Get(':id/bookings')
+  getBookings(@Param('id') id: string, @Query() filters: GetClientBookingsDto) {
+    return this.clientService.getBookings(id, filters);
   }
 }

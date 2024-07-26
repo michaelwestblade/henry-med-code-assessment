@@ -56,6 +56,10 @@ export class ProviderBookingsService {
     return this.providerBooking.findAll({ providerId, ...filters });
   }
 
+  findAllForClient(clientId, filters) {
+    return this.providerBooking.findAll({ bookedById: clientId, ...filters });
+  }
+
   async findOne(providerId: string, id: string) {
     try {
       const booking = await this.providerBooking.findOne(providerId, id);

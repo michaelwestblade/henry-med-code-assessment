@@ -15,7 +15,7 @@ import { GetProviderBookingDto } from './dto/get-provider-booking.dto';
 import { AssignProviderBookingDto } from './dto/assign-provider-booking.dto';
 import { ConfirmProviderBookingDto } from './dto/confirm-provider-booking.dto';
 
-@Controller('provider-bookings/:providerId')
+@Controller('providers/:providerId/provider-bookings/')
 export class ProviderBookingsController {
   constructor(
     private readonly providerBookingsService: ProviderBookingsService,

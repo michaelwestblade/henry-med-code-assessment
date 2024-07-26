@@ -9,10 +9,15 @@ import { UpdateClientDto } from './dto/update-client.dto';
 import { Client } from './entities/client.entity';
 import { GetClientDto } from './dto/get-client.dto';
 import { Prisma } from '@prisma/client';
+import { GetClientBookingsDto } from './dto/get-client-bookings.dto';
+import { ProviderBookingsService } from '../provider-bookings/provider-bookings.service';
 
 @Injectable()
 export class ClientService {
-  constructor(private readonly client: Client) {}
+  constructor(
+    private readonly client: Client,
+    private readonly providerBookingsService: ProviderBookingsService,
+  ) {}
 
   async create(createClientDto: CreateClientDto) {
     // check if provider already exists
@@ -78,5 +83,15 @@ export class ClientService {
         `There was an issue deleting the client with id ${id}`,
       );
     }
+  }
+
+  async getBookings(id: string, filters: GetClientBookingsDto) {
+    const client = await this.client.findOne(id);
+
+    console.log(
+      `Fetching bookings for client with id ${id} and email ${client.email}`,
+    );
+
+    return this.providerBookingsService.findAllForClient(client.id, filters);
   }
 }
