@@ -18,30 +18,47 @@ const DEFAULT_EXPIRY_IN_MILLIS = DEFAULT_EXPIRY_IN_MINUTES * 60000;
 export class ProviderBookingsService {
   constructor(private readonly providerBooking: ProviderBooking) {}
 
-  async create(createProviderBookingDto: CreateProviderBookingDto) {
+  async create(
+    providerId: string,
+    createProviderBookingDto: CreateProviderBookingDto,
+  ) {
     // check  if provider booking already exists
     const bookingExists = await this.providerBooking.exists(
-      createProviderBookingDto.providerId,
+      providerId,
       createProviderBookingDto.startTime,
       createProviderBookingDto.endTime,
     );
 
+    // if booking exists, throw an error
     if (bookingExists) {
       throw new BadRequestException(
-        `Provider Booking already exists for provider ${createProviderBookingDto.providerId} with startTime ${createProviderBookingDto.startTime} and endTime ${createProviderBookingDto.endTime}`,
+        `Provider Booking already exists for provider ${providerId} with startTime ${createProviderBookingDto.startTime} and endTime ${createProviderBookingDto.endTime}`,
       );
     }
 
-    return this.providerBooking.create(createProviderBookingDto);
+    // check if booking overlaps
+    const overlappingBookings = await this.providerBooking.findAllInRange(
+      providerId,
+      createProviderBookingDto.startTime,
+      createProviderBookingDto.endTime,
+    );
+
+    if (overlappingBookings.length > 0) {
+      throw new BadRequestException(
+        `There are ${overlappingBookings.length} Provider Bookings for provider ${providerId} within startTime ${createProviderBookingDto.startTime} and endTime ${createProviderBookingDto.endTime}`,
+      );
+    }
+
+    return this.providerBooking.create(providerId, createProviderBookingDto);
   }
 
-  findAll(filters) {
-    return this.providerBooking.findAll(filters);
+  findAll(providerId: string, filters) {
+    return this.providerBooking.findAll({ providerId, ...filters });
   }
 
-  async findOne(id: string) {
+  async findOne(providerId: string, id: string) {
     try {
-      const booking = await this.providerBooking.findOne(id);
+      const booking = await this.providerBooking.findOne(providerId, id);
       return booking;
     } catch (error) {
       if (
@@ -58,8 +75,12 @@ export class ProviderBookingsService {
     }
   }
 
-  async update(id: string, updateProviderBookingDto: UpdateProviderBookingDto) {
-    const booking = await this.providerBooking.findOne(id);
+  async update(
+    providerId: string,
+    id: string,
+    updateProviderBookingDto: UpdateProviderBookingDto,
+  ) {
+    const booking = await this.providerBooking.findOne(providerId, id);
     const now = new Date().toISOString();
 
     // if booking is already confirmed, do not allow updates
@@ -94,8 +115,8 @@ export class ProviderBookingsService {
     }
   }
 
-  async remove(id: string) {
-    const booking = await this.providerBooking.findOne(id);
+  async remove(providerId: string, id: string) {
+    const booking = await this.providerBooking.findOne(providerId, id);
     const now = new Date().toISOString();
 
     // if booking has been confirmed, do not allow deletion
@@ -127,8 +148,12 @@ export class ProviderBookingsService {
     }
   }
 
-  async assign(id: string, assignProviderBookingDto: AssignProviderBookingDto) {
-    const booking = await this.providerBooking.findOne(id);
+  async assign(
+    providerId: string,
+    id: string,
+    assignProviderBookingDto: AssignProviderBookingDto,
+  ) {
+    const booking = await this.providerBooking.findOne(providerId, id);
     const now = new Date().toISOString();
 
     // if booking is already confirmed, do not allow confirmation
@@ -183,10 +208,11 @@ export class ProviderBookingsService {
   }
 
   async confirm(
+    providerId: string,
     id: string,
     confirmProviderBookingDto: ConfirmProviderBookingDto,
   ) {
-    const booking = await this.providerBooking.findOne(id);
+    const booking = await this.providerBooking.findOne(providerId, id);
     const now = new Date().toISOString();
 
     // if booking is already confirmed, do not allow confirmation

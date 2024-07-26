@@ -15,53 +15,77 @@ import { GetProviderBookingDto } from './dto/get-provider-booking.dto';
 import { AssignProviderBookingDto } from './dto/assign-provider-booking.dto';
 import { ConfirmProviderBookingDto } from './dto/confirm-provider-booking.dto';
 
-@Controller('provider-bookings')
+@Controller('provider-bookings/:providerId')
 export class ProviderBookingsController {
   constructor(
     private readonly providerBookingsService: ProviderBookingsService,
   ) {}
 
   @Post()
-  create(@Body() createProviderBookingDto: CreateProviderBookingDto) {
-    return this.providerBookingsService.create(createProviderBookingDto);
+  create(
+    @Param('providerId') providerId: string,
+    @Body() createProviderBookingDto: CreateProviderBookingDto,
+  ) {
+    return this.providerBookingsService.create(
+      providerId,
+      createProviderBookingDto,
+    );
   }
 
   @Get()
-  findAll(@Query() filters: GetProviderBookingDto) {
-    return this.providerBookingsService.findAll(filters);
+  findAll(
+    @Param('providerId') providerId: string,
+    @Query() filters: GetProviderBookingDto,
+  ) {
+    return this.providerBookingsService.findAll(providerId, filters);
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.providerBookingsService.findOne(id);
+  findOne(@Param('providerId') providerId: string, @Param('id') id: string) {
+    return this.providerBookingsService.findOne(providerId, id);
   }
 
   @Patch(':id')
   update(
+    @Param('providerId') providerId: string,
     @Param('id') id: string,
     @Body() updateProviderBookingDto: UpdateProviderBookingDto,
   ) {
-    return this.providerBookingsService.update(id, updateProviderBookingDto);
+    return this.providerBookingsService.update(
+      providerId,
+      id,
+      updateProviderBookingDto,
+    );
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.providerBookingsService.remove(id);
+  remove(@Param('providerId') providerId: string, @Param('id') id: string) {
+    return this.providerBookingsService.remove(providerId, id);
   }
 
   @Post(':id/assign')
   assign(
+    @Param('providerId') providerId: string,
     @Param('id') id: string,
     @Body() assignProviderBookingDto: AssignProviderBookingDto,
   ) {
-    return this.providerBookingsService.assign(id, assignProviderBookingDto);
+    return this.providerBookingsService.assign(
+      providerId,
+      id,
+      assignProviderBookingDto,
+    );
   }
 
   @Post(':id/confirm')
   confirm(
+    @Param('providerId') providerId: string,
     @Param('id') id: string,
     @Body() confirmProviderBookingDto: ConfirmProviderBookingDto,
   ) {
-    return this.providerBookingsService.confirm(id, confirmProviderBookingDto);
+    return this.providerBookingsService.confirm(
+      providerId,
+      id,
+      confirmProviderBookingDto,
+    );
   }
 }

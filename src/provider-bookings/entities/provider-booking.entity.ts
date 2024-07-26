@@ -7,9 +7,9 @@ import { Injectable } from '@nestjs/common';
 export class ProviderBooking {
   constructor(private readonly prisma: PrismaService) {}
 
-  findOne(id: string) {
+  findOne(providerId: string, id: string) {
     return this.prisma.providerBookings.findUnique({
-      where: { id },
+      where: { providerId, id },
     });
   }
 
@@ -27,17 +27,19 @@ export class ProviderBooking {
     return count > 0;
   }
 
-  create(createProviderBookingDto: CreateProviderBookingDto) {
+  create(
+    providerId: string,
+    createProviderBookingDto: CreateProviderBookingDto,
+  ) {
     return this.prisma.providerBookings.create({
       data: {
         startTime: createProviderBookingDto.startTime,
         endTime: createProviderBookingDto.endTime,
         booked: false,
-        expiry: new Date().toISOString(),
         confirmed: false,
         provider: {
           connect: {
-            id: createProviderBookingDto.providerId,
+            id: providerId,
           },
         },
       },
@@ -65,5 +67,17 @@ export class ProviderBooking {
 
   delete(id: string) {
     return this.prisma.providerBookings.delete({ where: { id } });
+  }
+
+  async findAllInRange(providerId: string, startTime: string, endTime: string) {
+    return this.prisma.providerBookings.findMany({
+      where: {
+        providerId,
+        OR: [
+          { startTime: { lte: endTime }, endTime: { gte: startTime } },
+          { startTime: { gte: startTime }, endTime: { lte: endTime } },
+        ],
+      },
+    });
   }
 }

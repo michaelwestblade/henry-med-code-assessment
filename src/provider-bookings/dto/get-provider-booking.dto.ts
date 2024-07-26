@@ -7,12 +7,6 @@ export class GetProviderBookingDto {
     required: false,
   })
   @JoiSchema(Joi.string().optional())
-  providerId?: string;
-
-  @ApiProperty({
-    required: false,
-  })
-  @JoiSchema(Joi.string().optional())
   bookedById?: string;
 
   @ApiProperty({

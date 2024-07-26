@@ -5,10 +5,6 @@ import * as Joi from 'joi';
 export class CreateProviderBookingDto {
   @ApiProperty()
   @JoiSchema(Joi.string())
-  providerId: string;
-
-  @ApiProperty()
-  @JoiSchema(Joi.string())
   startTime: string;
 
   @ApiProperty()
