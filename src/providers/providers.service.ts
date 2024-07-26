@@ -54,7 +54,14 @@ export class ProvidersService {
 
     console.log(`Updating provider with id ${id} and email ${provider.email}`);
 
-    return this.provider.update(id, updateProviderDto);
+    try {
+      return this.provider.update(id, updateProviderDto);
+    } catch (error) {
+      console.error(error);
+      throw new InternalServerErrorException(
+        `There was an issue updating the provider with id ${id}`,
+      );
+    }
   }
 
   async remove(id: string) {
@@ -62,6 +69,13 @@ export class ProvidersService {
 
     console.log(`Removing provider with id ${id} and email ${provider.email}`);
 
-    return this.provider.delete(id);
+    try {
+      await this.provider.delete(id);
+    } catch (error) {
+      console.error(error);
+      throw new InternalServerErrorException(
+        `There was an issue deleting the provider with id ${id}`,
+      );
+    }
   }
 }

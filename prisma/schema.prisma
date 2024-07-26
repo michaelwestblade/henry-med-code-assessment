@@ -32,10 +32,11 @@ model ProviderBookings {
   startTime DateTime @unique
   endTime DateTime
   booked Boolean
-  bookedBy Client @relation(fields: [bookedById], references: [id])
-  bookedById String @db.Uuid
+  bookedBy Client? @relation(fields: [bookedById], references: [id])
+  bookedById String? @db.Uuid
   confirmed Boolean
   expiry DateTime
+  expired Boolean @default(false)
 }
 
 model Client {

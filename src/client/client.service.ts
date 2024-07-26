@@ -55,7 +55,14 @@ export class ClientService {
 
     console.log(`Updating client with id ${id} and email ${client.email}`);
 
-    return this.client.update(id, updateClientDto);
+    try {
+      return this.client.update(id, updateClientDto);
+    } catch (error) {
+      console.error(error);
+      throw new InternalServerErrorException(
+        `There was an issue updating the client with id ${id}`,
+      );
+    }
   }
 
   async remove(id: string) {
@@ -63,6 +70,13 @@ export class ClientService {
 
     console.log(`Removing client with id ${id} and email ${client.email}`);
 
-    return this.client.delete(id);
+    try {
+      return this.client.delete(id);
+    } catch (error) {
+      console.error(error);
+      throw new InternalServerErrorException(
+        `There was an issue deleting the client with id ${id}`,
+      );
+    }
   }
 }
